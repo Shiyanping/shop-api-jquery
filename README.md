@@ -35,6 +35,7 @@
 
 ### 项目目录
 
+```
 ├── LICENSE  
 ├── README.md   
 ├── commons  
@@ -66,7 +67,7 @@
 │   ├── index.less  
 │   ├── modal.css   
 │   ├── productDetail.less  
-│   └── productList.less    
+│   └── productList.less  
 ├── mock    // 接口数据  
 │   ├── ajax    
 │   │   └── mall    
@@ -101,4 +102,19 @@
 │   │               ├── personalID.js  
 │   │               └── personalInformation.js  
 │   └── velocity    
-└── src  // 页面逻辑js  
+└── src  // 页面逻辑js 
+    ├── createOrder
+    │   └── main.js
+    ├── evaluation
+    │   └── main.js
+    ├── historyDetail
+    │   └── main.js
+    ├── historyList
+    │   └── main.js
+    ├── index
+    │   └── main.js
+    ├── productDetail
+    │   └── main.js
+    └── productList
+        └── main.js
+``` 
