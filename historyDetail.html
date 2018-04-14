@@ -1,0 +1,285 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <title>兑换详情</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="./less/modal.css">
+    <link rel="stylesheet" href="./less/base.css">
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                oSize = docEl.clientWidth / 3.75;
+
+            docEl.style.fontSize = oSize + 'px';
+        }
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+    <link rel="stylesheet" href="./less/historyDetail.less">
+</head>
+<body>
+<div class="container">
+    <div class="product">
+
+    </div>
+    <div class="order-info-box">
+        <div class="order-info order-info-product" style="display: none;">
+
+        </div>
+        <div class="order-info order-info-flow" style="display: none;">
+
+        </div>
+        <div class="order-info order-info-ailpay" style="display: none">
+
+        </div>
+    </div>
+</div>
+<div id="doubleBtnModal" class="modal_box">
+    <div id="double_modal" class="modal">
+        <div id="double_modal_tit" class="modal_tit"></div>
+        <div id="double_modal_info" class="modal_info">
+        </div>
+        <div id="double_modal_btn" class="modal_btnLeft"></div>
+        <div id="double_modal_btn1" class="modal_btnRight"></div>
+    </div>
+</div>
+<script type="text/html" id="productInfoTpl">
+    <div class="product-header">
+        <span>{{time}}</span>
+        <span>订单编号：{{code}}</span>
+    </div>
+    <div class="product-content">
+        <div class="product-img">
+            <img src="{{image}}" alt="">
+        </div>
+        <div class="product-info">
+            <div class="product-name">{{name}}</div>
+            <div class="product-detail">
+                <span>￥{{if value}}<b>{{value}}</b>{{else}}<b>{{price}}</b>{{/if}}</span>
+                <span>X1</span>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="alipayTpl">
+    <div class="user-info">
+        <p class="order-logo"><b></b></p>
+        <div>
+            <p>
+                真实姓名：{{remark.realName}}
+            </p>
+            <p>
+                支付宝号：{{remark.rechargeAccount}}
+            </p>
+            <p>
+                身份证号：{{remark.idCard}}
+            </p>
+        </div>
+    </div>
+    <div class="order-status">
+        <p class="order-logo"><b></b></p>
+        <div>
+            {{if status == 1 || status == 2}}
+            <p>
+                处理状态：<span>处理中</span>
+            </p>
+            <p>
+                订单正在处理，请等待
+            </p>
+            {{else if status == 3 || status == 4}}
+            <p>
+                处理状态：<span>转账中</span>
+            </p>
+            <p>
+                订单正在转账，请等待
+            </p>
+            {{else if status == 10}}
+            <p>
+                处理状态：<span class="success">处理成功</span>
+            </p>
+            <p>
+                提现已到账，请查收
+            </p>
+            {{else if status == 12 || status == 13}}
+            <p>
+                处理状态：<span class="fail">处理失败</span>
+            </p>
+            <p>
+                兑换失败，已退款<br>
+                支付宝提现有小概率转账不成功，如出现请尝试微信提现
+            </p>
+            {{else if status == 11}}
+            <p>
+                处理状态：<span class="fail">审核不通过</span>
+            </p>
+            <p>
+                系统判定您这笔订单存在异常，订单处理失败，已扣除的金额冻结。<br>请联系电话客服： <span style="color: #ff3238;width: auto;">010-XXXXXXXX</span> 反馈您的问题，我们将尽快解决。
+            </p>
+            {{/if}}
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="flowTpl">
+    <div class="user-info">
+        <p class="order-logo"><b></b></p>
+        <div>
+            <p>
+                手机号码：{{remark.rechargeAccount}}
+            </p>
+        </div>
+    </div>
+    <div class="order-status">
+        <p class="order-logo"><b></b></p>
+        <div>
+            {{if status == 1 || status == 2}}
+            <p>
+                处理状态：<span>审核中</span>
+            </p>
+            <p>
+                订单正在审核，请等待
+            </p>
+            {{else if status == 3 || status == 4}}
+            <p>
+                处理状态：<span>处理中</span>
+            </p>
+            <p>
+                订单正在处理，请等待
+            </p>
+            {{else if status == 10}}
+            <p>
+                处理状态：<span class="success">处理成功</span>
+            </p>
+            <p>
+                已成功充值，请查收
+            </p>
+            {{else if status == 12 || status == 13}}
+            <p>
+                处理状态：<span class="fail">处理失败</span>
+            </p>
+            <p>
+                兑换失败，已退款
+            </p>
+            {{else if status == 11}}
+            <p>
+                处理状态：<span class="fail">审核不通过</span>
+            </p>
+            <p>
+                系统判定您这笔订单存在异常，订单处理失败，已扣除的金额冻结。<br>请联系电话客服： <span style="color: #ff3238;width: auto;">010-XXXXXXXX</span> 反馈您的问题，我们将尽快解决。
+            </p>
+            {{/if}}
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="productTpl">
+    <div class="user-address">
+        <p class="order-logo"><b></b></p>
+        <div>
+            <p>
+                收货人：{{remark.name}}
+            </p>
+            <p>
+                电话号码：{{remark.mobile}}
+            </p>
+            <!--<p>-->
+                <!--收货地址：{{remark.region}}{{remark.street}}{{remark.detail}}-->
+            <!--</p>-->
+        </div>
+    </div>
+    <div class="order-status">
+        <p class="order-logo"><b></b></p>
+        <div>
+            {{if status == 1 || status == 2}}
+            <p>
+                处理状态：<span>审核中</span>
+            </p>
+            <p>
+                订单正在审核，请等待
+            </p>
+            {{else if status == 3 || status == 4}}
+            <p>
+                处理状态：<span>处理中</span>
+            </p>
+            <p>
+                订单正在处理，请等待
+            </p>
+            {{else if status == 5}}
+            <p>
+                处理状态：<span class="success">已发货</span>
+            </p>
+            <p>
+                商品已发货，请关注物流并查收
+            </p>
+            {{else if status == 10}}
+            <p>
+                处理状态：<span class="success">处理成功</span>
+            </p>
+            <p>
+                商品已发货，请关注物流并注意查收
+            </p>
+            {{else if status == 7}}
+            <p>
+                处理状态：<span class="success">中奖</span>
+            </p>
+            <p>
+                订单正在处理，请等待
+            </p>
+            {{else if status == 8}}
+            <p>
+                处理状态：<span class="fail">未中奖</span>
+            </p>
+            <p>
+                订单正在处理，请等待
+            </p>
+            {{else if status == 12 || status == 13}}
+            <p>
+                处理状态：<span class="fail">处理失败</span>
+            </p>
+            <p>
+                兑换失败，已退款
+            </p>
+            {{else if status == 11}}
+            <p>
+                处理状态：<span class="fail">审核不通过</span>
+            </p>
+            <p>
+                系统判定您这笔订单存在异常，订单处理失败，已扣除的金额冻结。<br>请联系电话客服： <span style="color: #ff3238;width: auto;">010-XXXXXXXX</span> 反馈您的问题，我们将尽快解决。
+            </p>
+            {{/if}}
+        </div>
+    </div>
+    {{if remark.expressCompany}}
+    <div class="order-delivery">
+        <p class="order-logo"><b></b></p>
+        <div>
+            <p>
+                物流：{{remark.expressCompany}} &nbsp;&nbsp;
+                单号：{{remark.trackingNum}}
+            </p>
+        </div>
+    </div>
+    {{/if}}
+    <input type="hidden" class="productOrderId" value="{{id}}">
+    {{if status == 5 && type==1}}
+    <div class="product-btn" data-id="{{id}}">
+        <button class="productBtn deliveryComment" >确认收货</button>
+    </div>
+    {{else if status == 10 && type==1 && evaluate==1}}
+    <div class="product-btn" data-id="{{id}}">
+        <button class="productBtn goComment" >去评价</button>
+    </div>
+    {{/if}}
+</script>
+<script src="./commons/libs/jquery-1.11.0.min.js"></script>
+<script src="./commons/libs/artTemplate.js"></script>
+<script src="./commons/js/config.js"></script>
+<script src="./commons/js/methods.min.js"></script>
+<script type="text/javascript" src="./src/historyDetail/main.js"></script>
+</body>
+</html>

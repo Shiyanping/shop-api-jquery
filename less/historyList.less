@@ -1,0 +1,224 @@
+.container {
+  width: 100%;
+  overflow: hidden;
+  height: auto;
+  background-color: #f5f5f5;
+  font-family: PingFangSC-Regular;
+  a {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .header {
+    height: .5rem;
+    width: 100%;
+    background: #fff;
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+    ul > li {
+      float: left;
+      width: 50%;
+      text-align: center;
+      line-height: .5rem;
+      a {
+        display: inline-block;
+        font-size: .15rem;
+        color: #999999;
+        height: 100%;
+        width: .64rem;
+        border-bottom: 2px solid transparent;
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .active {
+        border-bottom: 2px solid #FF5645;
+        color: #333;
+      }
+    }
+  }
+  #content {
+    position: relative;
+    min-height: 6.17rem;
+    .no-product {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      transform: translateX(-50%);
+      text-align: center;
+      p:nth-child(1) {
+        width: 1.93rem;
+        height: 1.41rem;
+        background: url("../images/group.png") no-repeat;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+      }
+      p:nth-child(2) {
+        font-size: .14rem;
+        color: #999999;
+        line-height: .5rem;
+      }
+      p:nth-child(3) {
+        .gohome {
+          display: inline-block;
+          width: 2.02rem;
+          height: .48rem;
+          -webkit-border-radius: 100px;
+          -moz-border-radius: 100px;
+          border-radius: 100px;
+          text-align: center;
+          line-height: .48rem;
+          font-size: .16rem;
+          color: #FFFFFF;
+          background: #FF5645;
+        }
+      }
+    }
+    .product {
+      width: 100%;
+      margin-bottom: .15rem;
+      background-color: #fff;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      .product-header {
+        height: .4rem;
+        line-height: .4rem;
+        padding: 0 0.12rem;
+        border-bottom: 1px solid #f5f5f5;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        .product-evaluation{
+          font-size: .14rem;
+          float: right;
+          color: #FF8A26;
+          margin-right: 0.1rem;
+        }
+        .product-header-time {
+          float: left;
+          font-size: .12rem;
+          color: #999999;
+          letter-spacing: 0;
+        }
+        .product-header-base {
+          float: right;
+          font-size: .14rem;
+          color: #FE9526;
+          letter-spacing: 0;
+        }
+        .fail {
+          color: #FF5645;
+          float: right;
+          font-size: .14rem;
+          letter-spacing: 0;
+        }
+        .success {
+          color: #42BD56;
+          float: right;
+          font-size: .14rem;
+          letter-spacing: 0;
+        }
+      }
+      .product-content {
+        height: 1.2rem;
+        padding: .12rem .12rem;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        .product-img {
+          //float: left;
+          width: 1.3rem;
+          height: .96rem;
+          margin-right: .1rem;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .product-info {
+          //float: right;
+          width: 2.06rem;
+          height: .96rem;
+          .product-name {
+            font-size: .16rem;
+            color: #000000;
+            line-height: .24rem;
+            height: .48rem;
+            margin-bottom: .2rem;
+            span {
+              color: #ff5645;
+              font-size: .12rem;
+            }
+          }
+          .product-detail {
+            height: .28rem;
+            :nth-child(1) {
+              font-family: PingFangSC-Medium;
+              font-size: .12rem;
+              color: #FF5645;
+              b {
+                font-size: .20rem;
+                line-height: .17rem;
+              }
+            }
+            :nth-child(2) {
+              float: right;
+              font-size: .14rem;
+              color: #666666;
+              line-height: .24rem;
+              b {
+                display: inline-block;
+                width: .08rem;
+                height: .12rem;
+                background: url("../images/hisroty_arrow.png") no-repeat;
+                -webkit-background-size: 100%;
+                background-size: 100%;
+              }
+            }
+          }
+        }
+      }
+      .product-btn{
+        height: 0.4rem;
+        .product-btn-background{
+          float: left;
+          height: 0.4rem;
+          background: #ffffff;
+          width: 100%;
+          border-top: 0.01rem #f5f5f5 solid;
+          .productBtn{
+            float: right;
+            margin-right:0.12rem;
+            width: 0.8rem;
+            height: 0.28rem;
+            border-radius: 1rem;
+            border: 0.01rem solid #FF5645;
+            background: #ffffff;
+            color:#FF5645;
+            font-size: 0.13rem;
+            margin-top: 0.06rem;
+            outline: none;
+          }
+        }
+      }
+    }
+
+  }
+  .duibaHistory {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    min-height: 6.17rem;
+  }
+}

@@ -1,0 +1,87 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <title>兑换详情</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="./less/modal.css">
+    <link rel="stylesheet" href="./less/base.css">
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                    oSize = docEl.clientWidth / 3.75;
+
+            docEl.style.fontSize = oSize + 'px';
+        }
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+    <link rel="stylesheet" href="./less/evaluation.less">
+</head>
+<body>
+<div class="container">
+    <div class="evaluation-header-wrapper">
+        <div class="evaluation-header">
+
+        </div>
+    </div>
+    <div class="evaluation-text-wrapper">
+        <div class="evaluation-text">
+            <textarea name="" id="" class="text" rows="7" cols="1" placeholder="宝贝满足你的期待么？说说他的优点和美中不足的地方吧！"></textarea>
+        </div>
+    </div>
+    <div class="evaluation-rule">字数限制:10-100字</div>
+    <div class="evaluation-btn">
+        <div class="success">确定</div>
+        <div class="fail">取消</div>
+    </div>
+    <input type="hidden" class="score" value="5">
+</div>
+
+<div id="singleBtnModal" class="modal_box">
+    <div id="single_modal" class="modal">
+        <div id="single_modal_tit" class="modal_tit"></div>
+        <div id="single_modal_info" class="modal_info">
+        </div>
+        <div id="single_modal_btn" class="modal_btn"></div>
+    </div>
+</div>
+
+<div id="doubleBtnModal" class="modal_box">
+    <div id="double_modal" class="modal">
+        <div id="double_modal_tit" class="modal_tit"></div>
+        <div id="double_modal_info" class="modal_info">
+        </div>
+        <div id="double_modal_btn" class="modal_btnLeft"></div>
+        <div id="double_modal_btn1" class="modal_btnRight"></div>
+    </div>
+</div>
+
+<script type="text/html" id="evaluationTpl">
+    <img src={{image}} alt="" class="evaluation-productImg">
+    <div class="evaluation-info">
+        <div class="evaluation-info-title">评分</div>
+        <div class="evaluation-info-score">
+            <ul>
+                <li class="star starBase" data-id="1"></li>
+                <li class="star starBase" data-id="2"></li>
+                <li class="star starBase" data-id="3"></li>
+                <li class="star starBase" data-id="4"></li>
+                <li class="star starBase" data-id="5"></li>
+            </ul>-id
+            <span class="scoreStatus">
+                非常好
+            </span>
+        </div>
+    </div>
+</script>
+<script src="./commons/libs/jquery-1.11.0.min.js"></script>
+<script src="./commons/libs/artTemplate.js"></script>
+<script src="./commons/js/config.js"></script>
+<script src="./commons/js/methods.min.js"></script>
+<script type="text/javascript" src="./src/evaluation/main.js"></script>
+</body>
+</html>

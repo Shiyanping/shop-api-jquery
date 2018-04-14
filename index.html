@@ -1,0 +1,115 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <title>商城</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="./commons/libs/swiper/swiper-3.4.1.min.css">
+    <link rel="stylesheet" href="./less/base.css">
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                oSize = docEl.clientWidth / 3.75;
+
+            docEl.style.fontSize = oSize + 'px';
+        }
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+    <link rel="stylesheet" href="./less/index.less">
+</head>
+<body>
+<div class="container">
+    <div class="swiper-container">
+        <div class="swiper-wrapper"></div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="history">
+        <div class="money">
+            余额 <span class="money-num"></span>
+        </div>
+        <div class="historyList">
+            <span class="history-logo"></span>
+            <span class="history-text">
+                我的订单 <b></b>
+            </span>
+        </div>
+    </div>
+    <div class="nav"></div>
+    <div class="more">
+        <span class="more-left">大家都在兑</span>
+        <span class="more-text all-product">
+            更多 <b></b>
+        </span>
+    </div>
+    <div class="hotList">
+    </div>
+    <div class="footer">
+        <a href="javascript:void(0)" class="all-product">查看全部商品</a>
+    </div>
+</div>
+
+<!--banner列表-->
+<script type="text/html" id="bannerListTpl">
+    {{each dataList as value i}}
+    <div class="swiper-slide"><a href="{{value.url}}">
+        <img src="{{value.image}}"></a></div>
+    {{/each}}
+</script>
+
+<!--用户积分-->
+<script type="text/html" id="userCreditTpl">
+    {{newCredit}}<b>元</b>
+</script>
+
+<!--分类列表-->
+<script type="text/html" id="categoryListTpl">
+    <ul>
+        {{each dataList as value i}}
+        <li data-id="{{value.id}}" class="category-item">
+            <img src="{{value.image}}" alt="{{value.name}}">
+            <p>{{value.name}}</p>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+
+<!--热销列表-->
+<script type="text/html" id="positionListTpl">
+    {{each dataList as value i}}
+    <div class="product" data-id="{{value.id}}" data-type="{{value.type}}">
+        <div class="product-img">
+            <img src="{{value.image}}">
+        </div>
+        <div class="product-info">
+            <div class="product-info-top">
+                {{if value.tags}}
+                <span class="product-label" style="background-color: {{value.tagsColor}};">{{value.tags}}</span>
+                {{/if}}
+                <span class="product-name">{{value.name}}</span>
+            </div>
+            <div class="product-price">
+                ￥<b>{{value.price}}</b>
+                <p>
+                    <b class="market-price">￥{{value.marketPrice}}</b>
+                    <i class="product-sold">
+                        已售<b> {{value.saleNum}} </b>件
+                    </i>
+                </p>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</script>
+<script src="./commons/libs/jquery-1.11.0.min.js"></script>
+<script src="./commons/libs/swiper/swiper-3.4.1.jquery.min.js"></script>
+<script src="./commons/libs/artTemplate.js"></script>
+<script src="./commons/js/config.js"></script>
+<script src="./commons/js/methods.min.js"></script>
+<script type="text/javascript" src="./src/index/main.js?v=1.0.0"></script>
+</body>
+</html>

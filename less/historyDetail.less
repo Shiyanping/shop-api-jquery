@@ -1,0 +1,190 @@
+html, body, .container {
+  width: 100%;
+  height: 100%;
+  background-color: #f5f5f5;
+  .product {
+    width: 100%;
+    height: 1.6rem;
+    margin: .15rem 0;
+    background-color: #fff;
+    padding: 0 .12rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    .product-header {
+      height: .4rem;
+      line-height: .4rem;
+      border-bottom: 1px solid #f5f5f5;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      :nth-child(1) {
+        float: left;
+        font-size: .12rem;
+        color: #999999;
+        letter-spacing: 0;
+      }
+      :nth-child(2) {
+        float: right;
+        font-size: .12rem;
+        color: #666666;
+        letter-spacing: 0;
+      }
+    }
+    .product-content {
+      height: 1.2rem;
+      padding: .12rem 0;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      .product-img {
+        float: left;
+        width: 1.3rem;
+        height: .96rem;
+        margin-right: .1rem;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .product-info {
+        float: right;
+        width: 2.09rem;
+        height: .96rem;
+        .product-name {
+          font-size: .16rem;
+          color: #000000;
+          line-height: .24rem;
+          height: .48rem;
+          margin-bottom: .2rem;
+        }
+        .product-detail {
+          height: .28rem;
+          font-family: PingFangSC-Medium;
+          :nth-child(1) {
+            font-size: .12rem;
+            color: #FF5645;
+            b {
+              font-size: .20rem;
+              line-height: .17rem;
+            }
+          }
+          :nth-child(2) {
+            float: right;
+            font-size: .14rem;
+            color: #999999;
+          }
+        }
+      }
+    }
+  }
+  .order-info {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    > div {
+      padding: 0.15rem;
+      margin-bottom: .07rem;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      background-color: #fff;
+      font-size: .16rem;
+      color: #000000;
+      line-height: .24rem;
+      height: 100%;
+      .order-logo {
+        float: left;
+        width: .35rem;
+        b {
+          position: relative;
+          display: inline-block;
+          width: .24rem;
+          height: .24rem;
+        }
+      }
+      :nth-child(2) {
+        display: inline-block;
+        width: 3.05rem;
+        height: 100%;
+        p {
+          width: 100%;
+        }
+      }
+    }
+    .product-btn{
+      height: 0.4rem;
+      .productBtn{
+        float: right;
+        width: 0.8rem;
+        height: 0.28rem;
+        border-radius: 1rem;
+        border: 0.01rem solid #FF5645;
+        background: #ffffff;
+        color:#FF5645;
+        font-size: 0.13rem;
+        padding:0;
+        margin-top: -0.09rem;
+        outline: none;
+      }
+    }
+    .user-address {
+      .order-logo {
+        b {
+          background: url("../images/address.png") no-repeat;
+          -webkit-background-size: 100% 100%;
+          background-size: 100% 100%;
+        }
+      }
+      :nth-child(2) {
+        :nth-child(1) {
+          margin-bottom: .1rem;
+        }
+      }
+    }
+    .order-status {
+      .order-logo {
+        b {
+          background: url("../images/status.png") no-repeat;
+          -webkit-background-size: 100% 100%;
+          background-size: 100% 100%;
+        }
+      }
+      :nth-child(2) {
+        :nth-child(1) {
+          span {
+            color: #FE9526;
+          }
+          span.success {
+            color: #42BD56;
+          }
+          span.fail {
+            color: #FF5645;
+          }
+        }
+        :nth-child(2) {
+          font-size: .14rem;
+          color: #666666;
+        }
+      }
+    }
+    .order-delivery {
+      .order-logo {
+        b {
+          background: url("../images/logistics.png") no-repeat;
+          -webkit-background-size: 100% 100%;
+          background-size: 100% 100%;
+        }
+      }
+    }
+    .user-info, .lottery-info{
+      .order-logo {
+        b {
+          background: url("../images/info.png") no-repeat;
+          -webkit-background-size: 100% 100%;
+          background-size: 100% 100%;
+        }
+      }
+    }
+  }
+}

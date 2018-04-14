@@ -1,0 +1,277 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+    <title>商品详情</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="./less/modal.css">
+    <link rel="stylesheet" href="./commons/libs/dropload/dropload.css">
+    <link rel="stylesheet" href="./less/base.css">
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                oSize = docEl.clientWidth / 3.75;
+
+            docEl.style.fontSize = oSize + 'px';
+        }
+
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+    <link rel="stylesheet" href="./less/productDetail.less">
+</head>
+
+<body>
+<div class="container">
+    <div class="product">
+
+    </div>
+    <div class="footer">
+
+    </div>
+</div>
+<input type="hidden" id="minId">
+<input type="hidden" id="minTime">
+
+<div id="singleBtnModal" class="modal_box">
+    <div id="single_modal" class="modal">
+        <div id="single_modal_tit" class="modal_tit"></div>
+        <div id="single_modal_info" class="modal_info">
+        </div>
+        <div id="single_modal_btn" class="modal_btn"></div>
+    </div>
+</div>
+
+<!--商品详情-->
+<script type="text/html" id="productTpl">
+    <div class="product-img">
+        <img src="{{image}}">
+    </div>
+    <div class="product-info">
+        <div class="product-name">{{name}}</div>
+        {{if type==1}}
+        <div class="product-score">
+            <span class="product-score-title">用户评分:</span>
+            <span class="product-score-starList">
+                    {{if score==0}}
+                        <ul class="product-score-list">
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                        </ul>
+                    {{/if}}
+                    {{if score>0&&score<=0.5}}
+                        <ul class="product-score-list">
+                            <li><img src="images/halfStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                        </ul>
+                    {{/if}}
+                    {{if score>0.5&&score<=1}}
+                        <ul class="product-score-list">
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                        </ul>
+                    {{/if}}
+                    {{if score>1&&score<=1.5}}
+                        <ul class="product-score-list">
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/halfStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                        </ul>
+                    {{/if}}
+                    {{if score>1.5&&score<=2}}
+                        <ul class="product-score-list">
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                        </ul>
+                    {{/if}}
+                    {{if score>2&&score<=2.5}}
+                        <ul class="product-score-list">
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/halfStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                        </ul>
+                    {{/if}}
+                    {{if score>2.5&&score<=3}}
+                        <ul class="product-score-list">
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                        </ul>
+                    {{/if}}
+                    {{if score>3&&score<=3.5}}
+                        <ul class="product-score-list">
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/halfStarRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                        </ul>
+                    {{/if}}
+                    {{if score>3.5&&score<=4}}
+                        <ul class="product-score-list">
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/noStarRed@2x.png" alt=""></li>
+                        </ul>
+                    {{/if}}
+                    {{if score>4&&score<=4.5}}
+                        <ul class="product-score-list">
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/halfStarRed@2x.png" alt=""></li>
+                        </ul>
+                    {{/if}}
+                    {{if score>4.5&&score<=5}}
+                        <ul class="product-score-list">
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                            <li><img src="images/starRed@2x.png" alt=""></li>
+                        </ul>
+                    {{/if}}
+                </span>
+        </div>
+        {{/if}}
+        <div class="product-info-bottom">
+            <div class="product-price">
+                ￥ <i>{{price}}</i> 
+                <b>￥{{marketPrice}}</b>
+            </div>
+            <div class="product-saleNum">
+                已售<i> {{saleNum}} </i>件
+            </div>
+        </div>
+        {{if taskProperty && taskProperty != ''}}
+        <div class="task-tips">
+            {{if taskProperty.taskType == 1}}
+                需阅读获得金币：<span>{{taskProperty.totalCount}}</span>
+            {{else if taskProperty.taskType == 2}}
+                需邀请好友数量：<span>{{taskProperty.totalCount}}</span>
+            {{else if taskProperty.balanceLimit}} 
+                余额需达到：<span>{{taskProperty.balanceLimit}}</span> 积分 
+            {{/if}}
+        </div>
+        {{/if}}
+    </div>
+    <div class="user-info">
+        
+    </div>
+    {{if type==1}}
+    <div class="product-detail-tab">
+        <ul>
+            <li class="product-detail-tabTitle  product-tab1 titleColor" data="tab1">
+                商品详情
+                <div class="product-detail-tab-line lineShow"></div>
+            </li>
+            <li class="product-detail-tabTitle product-tab2" data="tab2">
+                {{if commentCount>999}} 评价（999+） {{else}} 评价（{{commentCount}}） {{/if}}
+                <div class="product-detail-tab-line"></div>
+            </li>
+        </ul>
+    </div>
+    <div class="tabWrapper">
+        <div class="product-desc descShow product-desc-show" id="tab1">
+            {{#desc}}
+        </div>
+        <div class="product-assess descShow" id="tab2">
+            <div class="product-assessList"></div>
+        </div>
+    </div>
+    {{else}}
+    <div class="product-detail-title">商品详情</div>
+    <div class="product-desc">
+        {{#desc}}
+    </div>
+    {{/if}}
+</script>
+<script type="text/html" id="userInfoTpl">
+    {{if hasBefore}}
+    <div class="user-info-box">
+        <i class="title-icon"></i>
+        <img src="images/withdraw_tips.png" class="withdraw-tips"/>
+        <p class="user-info-tips">
+            <span>收款信息</span>
+            <span class="update-user-info">修改账号 <img src="images/right_arrow.png" /></span>
+        </p>
+        {{if type == 2}}
+        <div class="wx-user-info user-info-detail">
+            <p>系统默认提现至上一单微信账号中</p>
+            <p>若您需要修改，请在这里进行修改</p>
+        </div>
+        {{else if type == 1}}
+        <div class="alipay-user-info user-info-detail">
+            <p>收款人：{{name}}</p>
+            <p>支付宝号：{{account}}</p>
+        </div>
+        {{/if}}
+    </div>
+    {{/if}}
+</script>
+<!--用户积分-->
+<script type="text/html" id="userCreditTpl">
+    <div class="balance">
+        余额：<b>{{newCredit}}元</b>
+    </div>
+    <div class="footer-btn">
+        {{if enough == '下架'}}
+        <a href="javascript:void(0)" style="background: #BEBEBE;">商品已下架</a> 
+        {{else if enough=='无货'}}
+        <a href="javascript:void(0)" style="background: #BEBEBE;">商品补货中</a> 
+        {{else if enough >= 0}}
+        <a href="javascript:void(0)" class="buyBtn">立即兑换</a>
+        {{else}}
+        <a href="javascript:void(0)" style="background: #BEBEBE;">余额不足</a> 
+        {{/if}}
+    </div>
+</script>
+<!--评论列表-->
+<script type="text/html" id="commentListTpl">
+    {{if dataList.length>0}} {{each dataList as value i}}
+    <div class="product-assess-wrapper">
+        <div class="product-assess-imgWrapper">
+            <img src="images/head@2x.png" alt="">
+            <span class="product-assess-id">{{value.userId}}</span>
+            <span class="product-assess-time">{{value.time}}</span>
+        </div>
+        <div class="product-assess-comment">
+            {{value.comment}}
+        </div>
+    </div>
+    {{/each}} {{/if}}
+</script>
+<script src="./commons/libs/jquery-1.11.0.min.js"></script>
+<script src="./commons/libs/artTemplate.js"></script>
+<script src="./commons/js/config.js"></script>
+<script src="./commons/js/methods.min.js"></script>
+<script src="./commons/libs/dropload/dropload.js"></script>
+<script type="text/javascript" src="./src/productDetail/main.js"></script>
+</body>
+
+</html>

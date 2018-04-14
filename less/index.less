@@ -1,0 +1,265 @@
+.container {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  font-family: PingFangSC-Regular;
+  b {
+    font-weight: 100;
+  }
+  .history {
+    display: none;
+    width: 100%;
+    height: .5rem;
+    background-color: #fff;
+    border-top: 1px solid #FAFAFA;
+    border-bottom: 1px solid #FAFAFA;
+    box-sizing: border-box;
+    .money, .historyList{
+      height: 100%;
+      width: 50%;
+      line-height: .5rem;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    .money {
+      float: left;
+      padding-left: .16rem;
+      color: #323232;
+      font-size: .16rem;
+    }
+    .historyList {
+      float: right;
+      text-align: right;
+      padding-right: .26rem;
+      .history-logo {
+        position: relative;
+        display: inline-block;
+        width: .18rem;
+        height: .18rem;
+        top: .03rem;
+        background: url("../images/history.png") no-repeat;
+        -webkit-background-size: 100%;
+        background-size: 100%;
+      }
+      .history-text {
+        font-size: .16rem;
+        color: #323232;
+        b {
+          position: relative;
+          top: 0.01rem;
+          display: inline-block;
+          width: .08rem;
+          height: .12rem;
+          background: url("../images/hisroty_arrow.png") no-repeat;
+          -webkit-background-size: 100%;
+          background-size: 100%;
+        }
+      }
+    }
+  }
+  .nav {
+    width: 100%;
+    height: 1.1rem;
+    overflow-x: scroll;
+    margin: .08rem 0;
+    background: #fff;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    ul {
+      height: 100%;
+      li {
+        float: left;
+        width: 0.75rem;
+        height: 1.1rem;
+        background-color: #fff;
+        text-align: center;
+        padding-top: .28rem;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        img {
+          width: .36rem;
+          height: .36rem;
+          margin-bottom: .1rem;
+        }
+        p {
+          font-size: .13rem;
+          color: #323232;
+        }
+      }
+      li:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  .swiper-container {
+    width: 100%;
+    height: 1.5rem;
+    .swiper-pagination {
+      text-align: right;
+    }
+    .swiper-slide a, .swiper-slide a img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .more {
+    display: none;
+    width: 100%;
+    height: .5rem;
+    background-color: #fff;
+    padding: .14rem 0;
+    border-bottom: 1px solid #f5f5f5;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    .more-left, .more-text {
+      height: .22rem;
+      line-height: .22rem;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    .more-left {
+      float: left;
+      width: 1rem;
+      border-left: 4px solid #FF5645;
+      font-size: .16rem;
+      color: #333333;
+      padding-left: .1rem;
+    }
+    .more-text {
+      float: right;
+      width: .55rem;
+      padding-right: .12rem;
+      font-size: .14rem;
+      color: #999999;
+      b {
+        position: relative;
+        top: 0.01rem;
+        display: inline-block;
+        width: .08rem;
+        height: .12rem;
+        background: url("../images/more_arrow.png") no-repeat;
+        -webkit-background-size: 100%;
+        background-size: 100%;
+      }
+    }
+  }
+  .hotList {
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    .product {
+      float: left;
+      width: 50%;
+      background: #f1f1f1;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      &:nth-child(2n+1) {
+        border-right: 1px solid #f5f5f5;
+        border-bottom: 1px solid #f5f5f5;
+      }
+      &:nth-child(2n) {
+        border-bottom: 1px solid #f5f5f5;
+      }
+      .product-img {
+        width: 100%;
+        height: 1.82rem;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .product-info {
+        width: 100%;
+        height: 1.1rem;
+        padding: .12rem;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        background-color: #fff;
+        .product-info-top {
+          height: .4rem;
+          line-height: .2rem;
+          .product-label {
+            padding: 0 .05rem;
+            font-size: 12px;
+            color: #fff;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            background-color: #ff5546;
+          }
+          .product-name {
+            font-family: PingFangSC-Medium;
+            font-size: .14rem;
+            color: #000000;
+          }
+        }
+        .product-price {
+          height: .37rem;
+          font-size: .16rem;
+          color: #FF5645;
+          line-height: .18rem;
+          margin-top:0.03rem;
+          b {
+            font-size: .2rem;
+          }
+          p {
+            float: left;
+            width: 100%;
+            b {
+              font-size: .12rem;
+              color: #999999;
+              text-decoration: line-through;
+            }
+            .market-price {
+              position: relative;
+              left: .03rem;
+            }
+            .product-sold {
+              float: right;
+              font-size: .10rem;
+              color: #999999;
+              font-style: normal;
+              b {
+                font-size: .12rem;
+                color: #42BD56;
+                line-height: .14rem;
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    display: none;
+    height: .7rem;
+    width: 100%;
+    text-align: center;
+    line-height: .7rem;
+    a {
+      display: inline-block;
+      width: 3.51rem;
+      height: .48rem;
+      background-color: #FF5645;
+      -webkit-border-radius: 1rem;
+      -moz-border-radius: 1rem;
+      border-radius: 1rem;
+      color: #fff;
+      text-align: center;
+      line-height: .48rem;
+      font-size: .16rem;
+    }
+  }
+  .swiper-container-horizontal>.swiper-pagination-bullets {
+    bottom: 0;
+  }
+}

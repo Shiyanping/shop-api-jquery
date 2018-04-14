@@ -1,0 +1,83 @@
+/*两按钮弹窗*/
+.modal_btnLeft{
+    width: 0.8rem;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    text-align: center;
+    color: #333333;
+    border-radius: 0.08rem;
+    border: 1px solid #333333;
+    display: inline-block;
+    margin-left: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+
+.modal_btnRight{
+    width: 0.8rem;
+    height: 0.3rem;
+    line-height: 0.3rem;
+    text-align: center;
+    color: #333333;
+    border-radius: 0.08rem;
+    border: 1px solid #333333;
+    display: inline-block;
+    float: right;
+    margin-right: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+
+/*单按钮弹窗*/
+.modal_box {
+    display: none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.2);
+    z-index: 9999;
+}
+
+.modal {
+    width:3rem;
+    overflow: hidden;
+    background:#fff;
+    position: fixed;
+    left:50%;
+    top:50%;
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    border-radius:0.12rem;
+}
+
+.modal_btn {
+    text-align: center;
+    line-height: .45rem;
+    font-size: .16rem;
+    color: #FF5645;
+    letter-spacing: 0;
+    border-top:1px solid #ddd;
+    height:.45rem;
+}
+
+.modal_tit {
+    width: 100%;
+    overflow: hidden;
+    font-size: 0.18rem;
+    color: #000000;
+    text-align: center;
+    margin-top: .2rem;
+}
+
+.modal_info {
+    font-size: .16rem;
+    color: #000000;
+    line-height: .21rem;
+    text-align: center;
+    margin: .15rem 0 .15rem;
+    padding: 0 .15rem;
+    box-sizing: border-box;
+}

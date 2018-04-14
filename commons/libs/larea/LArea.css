@@ -1,0 +1,225 @@
+/**
+ * LArea移动端城市选择控件
+ *
+ * version:1.7.2
+ *
+ * author:黄磊
+ *
+ * git:https://github.com/xfhxbb/LArea
+ *
+ * Copyright 2016
+ *
+ * Licensed under MIT
+ *
+ * 最近修改于： 2016-6-12 16:47:41
+ */
+.gearArea {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9900;
+    overflow: hidden;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both
+}
+
+.area_ctrl {
+    vertical-align: middle;
+    background-color: #d5d8df;
+    color: #000;
+    margin: 0;
+    height: auto;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 9901;
+    overflow: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+}
+
+.slideInUp {
+    -webkit-animation: slideInUp .3s;
+            animation: slideInUp .3s;
+}
+
+@-webkit-keyframes slideInUp {
+    from {
+        -webkit-transform: translate3d(0, 100%, 0);
+                transform: translate3d(0, 100%, 0)
+    }
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0)
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        -webkit-transform: translate3d(0, 100%, 0);
+                transform: translate3d(0, 100%, 0)
+    }
+    to {
+        -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0)
+    }
+}
+
+.area_roll {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: transparent;
+    -webkit-mask: -webkit-gradient(linear, 0% 50%, 0% 100%, from(#debb47), to(rgba(36, 142, 36, 0)));
+    -webkit-mask: -webkit-linear-gradient(top, #debb47 50%, rgba(36, 142, 36, 0))
+}
+
+.area_roll>div {
+    font-size: 1.6em;
+    height: 10em;
+    float: left;
+    background-color: transparent;
+    position: relative;
+    overflow: hidden;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1
+}
+
+.area_roll>div .gear {
+    width: 100%;
+    float: left;
+    position: absolute;
+    z-index: 9902;
+    margin-top: 4em
+}
+
+.area_roll_mask {
+    /*-webkit-mask: -webkit-gradient(linear, 0% 40%, 0% 0%, from(#debb47), to(rgba(36, 142, 36, 0)));*/
+    /*-webkit-mask: -webkit-linear-gradient(bottom, #debb47 50%, rgba(36, 142, 36, 0));*/
+    padding: 0;
+    background:#fff;
+}
+
+.area_grid {
+    position: relative;
+    top: 4em;
+    width: 100%;
+    height: 2em;
+    margin: 0;
+    box-sizing: border-box;
+    z-index: 0;
+    border-top: 1px solid #abaeb5;
+    border-bottom: 1px solid #abaeb5
+}
+
+.area_roll>div:nth-child(3) .area_grid>div {
+    left: 42%
+}
+
+.area_btn {
+    color: #0575f2;
+    font-size: 1.6em;
+    line-height: 1em;
+    text-align: center;
+    padding: .8em 1.5em
+}
+
+.area_btn_box:before,
+.area_btn_box:after {
+    /*content: '';*/
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    display: block;
+    background-color: #96979b;
+    z-index: 15;
+    -webkit-transform: scaleY(0.33);
+            transform: scaleY(0.33)
+}
+
+.area_btn_box {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack:justify;
+    -webkit-justify-content:right;
+        -ms-flex-pack:justify;
+            justify-content:space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-color: #fff;
+    position: relative;
+    padding:4px 0;
+}
+
+.area_btn_left{font-size:14px;color:#64af42;padding:4px 6px;border-radius:3px;border:solid 1px #64af42;margin-left:16px;line-height:1;}
+.area_btn_left.news {
+    color:#ff5645;
+    border:solid 1px #ff5645;
+}
+.area_btn_right{display:flex;}
+.larea_cancel{color:#9b9b9b;}
+.larea_finish{color:#64af42;}
+.larea_finish.news {
+    color:#ff5645;
+}
+
+.area_btn_box:before {
+    left: 0;
+    top: 0;
+    -webkit-transform-origin: 50% 20%;
+            transform-origin: 50% 20%
+}
+
+.area_btn_box:after {
+    left: 0;
+    bottom: 0;
+    -webkit-transform-origin: 50% 70%;
+            transform-origin: 50% 70%
+}
+
+.tooth {
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    line-clamp: 1;
+    -webkit-box-orient:vertical;
+    -webkit-box-direction:normal;
+    -webkit-flex-direction:column;
+        -ms-flex-direction:column;
+            flex-direction:column;
+    overflow: hidden
+}
+/*遇到问题弹框*/
+.area_tips{display:none;}
+.area_tips_bg{position:fixed;z-index:9908;top:0;right:0;bottom:0;left:0;background:rgba(0,0,0,.3);}
+.area_tips_box{position:fixed;top:50%;left:30px;right:30px;-webkit-transform:translateY(-50%);transform:translateY(-50%);z-index:9909;background:#fff;border:solid 1px #9b9b9b;padding:26px 24px 0;}
+.area_tips_title{color:#000000;font-weight:bold;font-size:24px;}
+.area_tips_point{color:#757575;font-size:16px;padding-bottom:10px;}
+.area_tips_input{border-bottom:solid 1px #979797;overflow:hidden;padding:0 4px;}
+.area_tips_input input{float:left;height:44px;line-height:44px;width:100%;font-size:16px;border:none;padding:0;margin:0;border-radius:0;outline:none;}
+.area_tips_btn{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end;padding-top:20px;}
+.area_tips_item{width:50px;height:50px;line-height:50px;text-align:center;font-size:16px;}
+.area_tips_cancel{color:#9b9b9b;}
+.area_tips_success{color:#64af42;}
+.area_tips_success.news {color:#ff5645;}

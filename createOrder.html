@@ -1,0 +1,144 @@
+<!doctype html>
+<html class="no-js">
+
+<head>
+    <title>订单确认</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="./less/modal.css">
+    <link rel="stylesheet" href="./less/base.css">
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                oSize = docEl.clientWidth / 3.75;
+
+            docEl.style.fontSize = oSize + 'px';
+        }
+
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+    <!-- 地址插件 -->
+    <link rel="stylesheet" href="./commons/libs/larea/LArea.css">
+    <!-- 页面基础 -->
+    <link rel="stylesheet" href="./less/createOrder.less">
+</head>
+
+<body>
+    <div class="container">
+        <div class="notWx">
+            <div class="product-info">
+
+            </div>
+            <div class="info-title">
+                收货信息：
+            </div>
+            <div class="info-content-box">
+                <div class="info-content info-content-flow" style="display: none">
+                    <div>
+                        <span>手机号：</span>
+                        <input type="tel" placeholder="请输入11位手机号" name="userMobile" maxlength="11">
+                    </div>
+                </div>
+                <div class="info-content info-content-alipay" style="display: none">
+                    <div class="alipay_userName">
+                        <span>真实姓名:</span>
+                        <input type="text" placeholder="为保证现金能正确到达账户，需填写姓名" name="userName">
+                    </div>
+                    <div>
+                        <span>支付宝号：</span>
+                        <input type="text" placeholder="请输入支付宝账号" name="userAlipay">
+                    </div>
+                    <div class="idCard">
+                        <span>身份证号：</span>
+                        <input type="text" placeholder="因财务报账需求，需填写身份证号" name="userCard">
+                    </div>
+                </div>
+                <div class="info-content info-content-product" style="display: none">
+                    <div>
+                        <span>收货人:</span>
+                        <input type="text" placeholder="请输入收货人姓名" name="userName">
+                    </div>
+                    <div>
+                        <span>联系电话:</span>
+                        <input type="text" placeholder="收货人电话, 方便联系" maxlength="11" name="userMobile">
+                    </div>
+                    <div>
+                        <span>地区:</span>
+                        <input type="text" id="addr" value="" placeholder="请选择地区" readonly/>
+                        <input id="addr_val" type="hidden" />
+                    </div>
+                    <div>
+                        <span>街道:</span>
+                        <input type="text" name="street" placeholder="请填写街道" />
+                    </div>
+                    <div>
+                        <span>详细地址:</span>
+                        <input type="text" name="address" placeholder="请填写门牌等详细信息">
+                    </div>
+                </div>
+                <div class="info-content info-content-qb" style="display: none">
+                    <div>
+                        <span>QQ号：</span>
+                        <input type="text" placeholder="请输入您的QQ号" name="userQQ">
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+
+            </div>
+        </div>
+    </div>
+
+    <div id="singleBtnModal" class="modal_box">
+        <div id="single_modal" class="modal">
+            <div id="single_modal_tit" class="modal_tit"></div>
+            <div id="single_modal_info" class="modal_info">
+            </div>
+            <div id="single_modal_btn" class="modal_btn"></div>
+        </div>
+    </div>
+    
+    <div id="doubleBtnModal" class="modal_box">
+        <div id="double_modal" class="modal">
+            <div id="double_modal_tit" class="modal_tit"></div>
+            <div id="double_modal_info" class="modal_info">
+            </div>
+            <div id="double_modal_btn" class="modal_btnLeft"></div>
+            <div id="double_modal_btn1" class="modal_btnRight"></div>
+        </div>
+    </div>
+
+    <script type="text/html" id="orderInfoTpl">
+        <div>
+            <img src="{{image}}" alt="">
+        </div>
+        <div class="product-info-content">
+            <b>{{name}}</b>
+            <div class="price-Box">
+                <span>￥</span>
+                <span>{{price}}</span>
+                <span>x1</span>
+            </div>
+        </div>
+    </script>
+    <script type="text/html" id="footerTpl">
+        <div class="sum">
+            合计：
+            <b>{{price}}元</b>
+        </div>
+        <a href="javascript:void(0)" class="buyBtn">确认兑换</a>
+    </script>
+    <script src="./commons/libs/jquery-1.11.0.min.js"></script>
+    <script src="./commons/libs/artTemplate.js"></script>
+    <script src="./commons/js/config.js"></script>
+    <script src="./commons/js/methods.min.js"></script>
+    <script src="./commons/libs/larea/LAreaData.js"></script>
+    <script src="./commons/libs/larea/LArea.js"></script>
+    <script src="./src/createOrder/main.js"></script>
+</body>
+
+</html>

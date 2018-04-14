@@ -1,0 +1,123 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <title>兑换记录</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="./less/modal.css">
+    <link rel="stylesheet" href="./less/base.css">
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                oSize = docEl.clientWidth / 3.75;
+
+            docEl.style.fontSize = oSize + 'px';
+        }
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+    <link rel="stylesheet" href="./less/historyList.less">
+</head>
+<body>
+<div class="container">
+    <div id="content">
+        <div class="no-product" style="display: none;">
+            <p></p>
+            <p>您还没有兑换过商品</p>
+            <p><a href="javascript:void(0)" class="gohome">去兑换</a></p>
+        </div>
+    </div>
+</div>
+
+<div id="doubleBtnModal" class="modal_box">
+    <div id="double_modal" class="modal">
+        <div id="double_modal_tit" class="modal_tit"></div>
+        <div id="double_modal_info" class="modal_info">
+        </div>
+        <div id="double_modal_btn" class="modal_btnLeft"></div>
+        <div id="double_modal_btn1" class="modal_btnRight"></div>
+    </div>
+</div>
+
+<!--购买历史-->
+<script type="text/html" id="historyListTpl">
+    {{each dataList as value i}}
+    <div class="product" data-id="{{value.id}}">
+        <div class="product-header">
+            <span class="product-header-time">{{value.time}}</span>
+            {{if value.status == 1 || value.status == 2}}
+                {{if value.type == 2 || value.type == 20}}
+                <span class="product-header-base">处理中</span>
+                {{else}}
+                <span class="product-header-base">审核中</span>
+                {{/if}}
+            {{else if value.status == 3 || value.status == 4}}
+                {{if value.type == 2 || value.type == 20}}
+                <span class="product-header-base">转账中</span>
+                {{else}}
+                <span class="product-header-base">处理中</span>
+                {{/if}}
+            {{else if value.status == 5}}
+            <span class="success">已发货</span>
+            {{else if value.status == 7}}
+            <span class="success">中奖</span>
+            {{else if value.status == 8}}
+            <span class="fail">未中奖</span>
+            {{else if value.status == 10}}
+                {{if value.type==1}}
+                <span class="success">交易成功</span>
+                {{else}}
+                <span class="success">处理成功</span>
+                {{/if}}
+            {{else if value.status == 11}}
+            <span class="fail">审核不通过</span>
+            {{else if value.status == 12 || value.status == 13}}
+                {{if value.type==2 || value.type==20}}
+                <span class="fail">转账失败，请用微信重试</span>
+                {{else}}
+                <span class="fail">处理失败</span>
+                {{/if}}
+            {{/if}}
+            {{if value.evaluate==1}}
+            <span class="product-evaluation">未评价</span>
+            {{/if}}
+        </div>
+        <div class="product-content">
+            <div class="product-img">
+                <img src="{{value.image}}">
+            </div>
+            <div class="product-info">
+                <div class="product-name">{{value.name}} {{if value.deductionsValue}}<span>（扣除作弊金额{{value.deductionsValue}}元）</span>{{/if}}</div>
+                <div class="product-detail">
+                    <span>￥{{if value.value}}<b>{{value.value}}</b>{{else}}<b>{{value.price}}</b>{{/if}}</span>
+                    <a href="javascript:void(0)" class="historyDetail">查看详情 <b></b></a>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" value="{{value.id}}" class="productOrderId">
+        {{if value.status == 5&& value.type==1}}
+        <div class="product-btn">
+            <div class="product-btn-background">
+                <button class="productBtn deliveryComment" >确认收货</button>
+            </div>
+        </div>
+        {{else if value.status == 10&& value.type==1&& value.evaluate==1}}
+        <div class="product-btn">
+            <div class="product-btn-background">
+                <button class="productBtn goComment" >去评价</button>
+            </div>
+        </div>
+        {{/if}}
+    </div>
+    {{/each}}
+</script>
+<script src="./commons/libs/jquery-1.11.0.min.js"></script>
+<script src="./commons/libs/artTemplate.js"></script>
+<script src="./commons/js/config.js"></script>
+<script src="./commons/js/methods.min.js"></script>
+<script type="text/javascript" src="./src/historyList/main.js"></script>
+</body>
+</html>

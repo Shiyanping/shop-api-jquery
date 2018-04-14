@@ -1,0 +1,174 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="./less/base.css">
+    <script>
+        function Rem() {
+            var docEl = document.documentElement,
+                oSize = docEl.clientWidth / 3.75;
+
+            docEl.style.fontSize = oSize + 'px';
+        }
+        window.addEventListener('resize', Rem, false);
+        Rem();
+    </script>
+    <link rel="stylesheet" href="./commons/libs/dropload/dropload.css">
+    <link rel="stylesheet" href="./less/productList.less">
+</head>
+<body>
+<div class="container">
+    <div class="productList">
+    </div>
+</div>
+
+<!--产品列表-->
+<script type="text/html" id="productListTpl">
+    {{each dataList as value i}}
+    <div class="product" data-id="{{value.id}}" data-type="{{value.type}}">
+        <div class="product-img">
+            <img src="{{value.image}}">
+        </div>
+        <div class="product-info">
+            <div class="product-info-top">
+                {{if value.tags}}
+                <span class="product-label" style="background-color: {{value.tagsColor}};">{{value.tags}}</span>
+                {{/if}}
+                <span class="product-name">{{value.name}}</span>
+            </div>
+            {{if value.type==1}}
+            <div class="product-score">
+                <span class="product-score-title">用户评分:</span>
+                    <span class="product-score-starList">
+                            {{if value.score==0}}
+                                <ul class="product-score-list">
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                </ul>
+                            {{/if}}
+                            {{if value.score>0&&value.score<=0.5}}
+                                <ul class="product-score-list">
+                                    <li><img src="images/halfStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                </ul>
+                            {{/if}}
+                            {{if value.score>0.5&&value.score<=1}}
+                                <ul class="product-score-list">
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                </ul>
+                            {{/if}}
+                            {{if value.score>1&&value.score<=1.5}}
+                                <ul class="product-score-list">
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/halfStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                </ul>
+                            {{/if}}
+                            {{if value.score>1.5&&value.score<=2}}
+                                <ul class="product-score-list">
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                </ul>
+                            {{/if}}
+                            {{if value.score>2&&value.score<=2.5}}
+                                <ul class="product-score-list">
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/halfStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                </ul>
+                            {{/if}}
+                            {{if value.score>2.5&&value.score<=3}}
+                                <ul class="product-score-list">
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                </ul>
+                            {{/if}}
+                            {{if value.score>3&&value.score<=3.5}}
+                                <ul class="product-score-list">
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/halfStarRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                </ul>
+                            {{/if}}
+                            {{if value.score>3.5&&value.score<=4}}
+                                <ul class="product-score-list">
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/noStarRed@2x.png" alt=""></li>
+                                </ul>
+                            {{/if}}
+                            {{if value.score>4&&value.score<=4.5}}
+                                <ul class="product-score-list">
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/halfStarRed@2x.png" alt=""></li>
+                                </ul>
+                            {{/if}}
+                            {{if value.score>4.5&&value.score<=5}}
+                                <ul class="product-score-list">
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                    <li><img src="images/starRed@2x.png" alt=""></li>
+                                </ul>
+                            {{/if}}
+                    </span>
+                </div>
+            {{else}}
+            <div class="product-score">
+
+            </div>
+            {{/if}}
+            <div class="product-price">
+                ￥<b>{{value.price}}</b>
+                <p>
+                    <b class="market-price">￥{{value.marketPrice}}</b>
+                    <i class="product-sold">
+                        已售<b> {{value.saleNum}} </b>件
+                    </i>
+                </p>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</script>
+<script src="./commons/libs/jquery-1.11.0.min.js"></script>
+<script src="./commons/libs/artTemplate.js"></script>
+<script src="./commons/js/config.js"></script>
+<script src="./commons/js/methods.min.js"></script>
+<script src="./commons/libs/dropload/dropload.js"></script>
+<script type="text/javascript" src="./src/productList/main.js"></script>
+</body>
+</html>
