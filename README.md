@@ -32,3 +32,73 @@
 
 ### 数据来源
 > idtc框架自带mock数据功能，会根据代码访问接口的路径，生成到mock文件夹中，在制定的文件中书写自己和后端定义的数据结构即可
+
+### 项目目录
+
+├── LICENSE  
+├── README.md   
+├── commons  
+│   ├── js  
+│   │   ├── config.js // 接口js   
+│   │   ├── methods.js // 封装的方法  
+│   │   └── methods.min.js  
+│   └── libs  
+│       ├── artTemplate.js  
+│       ├── dropload  
+│       ├── jquery-1.11.0.min.js  
+│       ├── larea  // 地区选择插件  
+│       └── swiper  
+├── createOrder.html  
+├── evaluation.html  
+├── historyDetail.html  
+├── historyList.html    
+├── idt-config.js   
+├── images  
+├── index.html   
+├── productDetail.html    
+├── productList.html   
+├── less    
+│   ├── base.css    
+│   ├── createOrder.less    
+│   ├── evaluation.less   
+│   ├── historyDetail.less  
+│   ├── historyList.less    
+│   ├── index.less  
+│   ├── modal.css   
+│   ├── productDetail.less  
+│   └── productList.less    
+├── mock    // 接口数据  
+│   ├── ajax    
+│   │   └── mall    
+│   │       └── api     
+│   │           ├── banner      
+│   │           │   └── list.js     
+│   │           ├── category     
+│   │           │   ├── list.js     
+│   │           │   └── product     
+│   │           │       └── list.js     
+│   │           ├── evaluate        
+│   │           │   ├── init.js     
+│   │           │   ├── list.js     
+│   │           │   └── save.js     
+│   │           ├── order   
+│   │           │   ├── confirm     
+│   │           │   │   └── progress.js     
+│   │           │   ├── create.js   
+│   │           │   ├── detail.js  
+│   │           │   └── history.js  
+│   │           ├── position  
+│   │           │   └── product  
+│   │           │       └── list.js  
+│   │           ├── product  
+│   │           │   ├── confirmDetail.js  
+│   │           │   ├── detail.js  
+│   │           │   └── list.js  
+│   │           └── user  
+│   │               ├── checkCanBuy.js  
+│   │               ├── getAddress.js  
+│   │               ├── getCredit.js  
+│   │               ├── personalID.js  
+│   │               └── personalInformation.js  
+│   └── velocity    
+└── src  // 页面逻辑js  
